@@ -1,143 +1,171 @@
+
+/* ===== GENERAL ===== */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: #dedede;
+    color: #222222;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 15px;
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 15px;
 }
 
 h1 {
     text-align: center;
-    font-family:Arial, sans-serif;
     font-size: 32px;
 }
 
-a {
-    color: #000;
-    text-decoration: none;
-    font-family:Arial, sans-serif;
-}
-
+/* Paragraph */
 p {
-   font-size: 25px;
-   font-family:Arial, sans-serif;
+    font-size: 20px;
+    text-align: center;
+    line-height: 1.5;
 }
 
-img{
-  width:100%;
+/* Links */
+a {
+    color: #000000;
+    text-decoration: underline;
 }
 
-
-p{
-  text-align:center;
+a:hover,
+a:focus {
+    color: #0056b3;
 }
 
-div img{
-    width:150px;
-    height: 150px;
-    display:block;
-    margin:auto;
-}
+/* ===== MOBILE FIRST ===== */
+/* Màn hình dưới 772px */
 
-div{
-  display: inline-block;
-  width: 24%;
-  margin: 5px;
-  padding: 2px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 
-main {
-    border: 5px #000 solid;
-    margin: 10px;
-}
- */
-/* 
-
-.container {
+.grid {
     display: grid;
     grid-template-columns: 1fr;
-    justify-items: center;
+    gap: 10px;
 }
- */
-/* img{
-    width: 200px;
-    height: 200px;
-    padding: 5px;
-} */
 
-/* .child {
-    position: relative;
-    display: inline-block;
-    border: 5px black solid;
-    margin: 5px;
-    border-radius: 5px;
-} */
-
-/* 
-
-.label {
-    display: none;
-    position: absolute;
-    top: 40%;
-    left: 40%;
-} */
-/* 
-.button {
-    display: inline-block;
-    border: 2px solid #000;
-    padding: 5px;
-    border-radius: 25px;
+/* Khung chứa hình ảnh */
+.grid figure {
+    margin: 0;
+    padding: 10px;
+    min-width: 0;
+    border: 2px solid #555555;
+    background-color: #ffffff;
+    color: #222222;
+    text-align: center;
 }
- */
-/* 
-.button:hover {
-    background-color:#fff;
-} */
 
-/* 
-footer {
-    display: flex;
-    justify-content: center;
-} */
-
-/* 
-header {
-    border-radius: 5px;
-    border: 5px #000 solid;
-    margin: 10px;
-} */
-
-/* 
-.label {
-    display: none;
-    position: absolute;
-    top: 40%;
-    left: 40%;
-} */
-/* 
-.child:hover .label {
+/* Hình ảnh */
+.grid img {
     display: block;
-} */
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+/* Chú thích ảnh */
+.grid figcaption {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* ===== MEDIA QUERY 1: TABLET ===== */
+/* Từ 772px trở lên */
+
+@media screen and (min-width: 772px) {
+
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Tạo hình tròn */
+    .grid figure {
+        border-radius: 50%;
+    }
+
+    .grid img {
+        border-radius: 50%;
+        aspect-ratio: 1 / 1;
+    }
+
+    /* Hình cuối chiếm cả 2 cột */
+    .grid figure:last-child {
+        grid-column: span 2;
+    }
+}
+
+/* ===== MEDIA QUERY 2: DESKTOP ===== */
+/* Từ 992px trở lên */
+
+@media screen and (min-width: 992px) {
+
+    /* Mỗi hình thứ 3 chiếm 2 cột */
+    .grid figure:nth-child(3n) {
+        grid-column: span 2;
+    }
+
+    /* Bỏ bo tròn */
+    .grid figure,
+    .grid img {
+        border-radius: 0;
+    }
+
+    .grid img {
+        aspect-ratio: 4 / 3;
+    }
+}
+
+/* ===== MEDIA QUERY 3: REDUCED MOTION ===== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* ===== MEDIA QUERY 4: DARK MODE ===== */
+
+@media (prefers-color-scheme: dark) {
+
+    body {
+        background-color: #121212;
+        color: #eeeeee;
+    }
+
+    .grid figure {
+        background-color: #292929;
+        color: #ffe680;
+        border-color: #000000;
+    }
+
+    a {
+        color: #ffe680;
+    }
+
+    a:hover,
+    a:focus {
+        color: #ffffff;
+    }
+}
