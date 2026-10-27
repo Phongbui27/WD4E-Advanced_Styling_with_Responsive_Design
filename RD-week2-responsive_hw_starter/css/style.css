@@ -45,20 +45,39 @@ div{
 
 
 
-/* TABLET VIEW */
+
+/* MOBILE: dưới 772px */
+div {
+    display: block;
+    width: 90%;
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* TABLET: từ 772px */
 @media screen and (min-width: 772px) {
     div {
         display: inline-block;
         width: 45vw;
-        box-sizing: border-box;
         vertical-align: top;
     }
 
     img {
-        max-width: 100%;
         max-height: 30vh;
     }
 }
+
+/* DESKTOP: từ 998px */
+@media screen and (min-width: 998px) {
+    div {
+        width: 30vw;
+    }
+}
+
 
 /* LARGE SCREEN VIEW */
 @media screen and (min-width: 998px) {
